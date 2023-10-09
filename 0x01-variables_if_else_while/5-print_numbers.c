@@ -1,19 +1,18 @@
 #include <stdio.h>
 
 /**
- * main - The program's entry point
+ * main - Entry point of the program
  *
- * Return: Always returns 0 to signify success
+ * Return: Always 0 (success)
  */
 int main(void)
 {
-    int digit;
+	int i;
 
-    for (digit = 0; digit < 10; digit++)
-    {
-        printf("%d\n", digit);
-    }
+	for (i = 0; i < 10; i++)
+	{
+		printf("%d\n", i);
+	}
 
-    return (0);
+	return (0);
 }
-
