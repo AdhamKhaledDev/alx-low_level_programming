@@ -16,7 +16,7 @@ _putchar((jack % 10) + 48);
 _putchar(':');
 _putchar((bauer / 10) + 48);
 _putchar((bauer / 10) + 48);
-_putchar("\n");
+_putchar('\n');
 }
 }
 }
