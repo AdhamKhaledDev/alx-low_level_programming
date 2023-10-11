@@ -1,7 +1,7 @@
 #include "main.h"
 /**
 * jack_bauer - Display all the minutes in a day, following the
-*               Jack Bauer format, from 00:00 to 23:59.
+*                Jack Bauer format, from 00:00 to 23:59.
 */
 void jack_bauer(void)
 {
