@@ -4,11 +4,11 @@
 * @n: The integer to be evaluated.
 * Return: The absolute value of the integer.
 */
-int _abs(int)
+int _abs(int r)
 {
-if (n >= 0)
+if (r >= 0)
 {
-return (n);
+return (r);
 }
-return (-n);
+return (-r);
 }
