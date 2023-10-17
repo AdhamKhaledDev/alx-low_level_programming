@@ -28,6 +28,6 @@ foundDigit = 0;
 i++;
 }
 if (foundDigit == 0)
-return 0;
+return (0);
 return (result);
 }
