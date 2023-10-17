@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * print_array - displays the first n elements of an integer array, followed by a new line
+ * print_array - shows the first n elements of an integer array followed by \n
  * @a: the array to be displayed
  * @n: the number of elements to show
  */
