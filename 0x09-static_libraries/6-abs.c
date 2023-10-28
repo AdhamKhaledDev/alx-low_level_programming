@@ -1,14 +1,10 @@
 #include "main.h"
-/**
-* _abs - Calculate the absolute value of an integer.
-* @r: The integer to be evaluated.
-* Return: The absolute value of the integer.
-*/
-int _abs(int r)
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+
+int _abs(int n)
 {
-if (r >= 0)
-{
-return (r);
-}
-return (-r);
+    return abs(n);
 }
