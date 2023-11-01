@@ -7,20 +7,27 @@
  *
  * Return: pointer to the copied string (Success), NULL (Error)
  */
+char *_strdup(char *str)
+{
+	char *dup;
+	unsigned int i, len;
 
-char *_strdup(char *str) {
-  if (str == NULL || str[0] == '\0') {
-    return NULL;
-  }
+	i = 0;
+	len = 0;
 
-  size_t len = strlen(str);
-  char *dup = malloc(sizeof(char) * (len + 1));
-  if (dup == NULL) {
-    return NULL;
-  }
+	if (str == NULL)
+		return (NULL);
 
-  memcpy(dup, str, len);
-  dup[len] = '\0';
+	while (str[len])
+		len++;
 
-  return dup;
+	dup = malloc(sizeof(char) * (len + 1));
+
+	if (dup == NULL)
+		return (NULL);
+
+	while ((dup[i] = str[i]) != '\0')
+		i++;
+
+	return (dup);
 }
