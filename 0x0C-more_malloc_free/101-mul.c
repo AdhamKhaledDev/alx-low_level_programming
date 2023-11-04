@@ -1,68 +1,93 @@
+#include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
-/**
- * _isdigit - Determines if a string is composed of digits
- * @argv: A pointer to the current item in the argument
- * Return: Returns 0 if all characters are digits, 1 if not all are digits.
- */
-int _isdigit(char *argv)
-{
-	int i;
 
-	i = 0;
-	while (argv[i])
-	{
-		if (argv[i] >= '0' && argv[i] <= '9')
-			i++;
-		else
-			return (1);
-	}
-	return (0);
-}
 /**
- * _atoi - Converts a string of ASCII digits into their corresponding values
- * @s: A pointer to the source string
- * Return: The numerical value represented by the digits
+ * is_digit - Check if a string consists of only digits.
+ * @str: The input string to check
+ * Return: 1 if all characters are digits, 0 if not
  */
-int _atoi(char *s)
+int is_digit(const char *str)
 {
-	int i, result;
-
-	i = result = 0;
-	while (s[i])
-	{
-		if (s[i] >= '0' && s[i] <= '9')
-		{
-			result *= 10;
-			result += (s[i] - '0');
-		}
-		i++;
-	}
-	return (result);
+    while (*str)
+    {
+        if (*str < '0' || *str > '9')
+            return 0;
+        str++;
+    }
+    return 1;
 }
+
 /**
- * main - The entry point of the program
- * @argc: The number of command-line arguments
- * @argv: An array of command-line arguments
- * Return: Returns 0 on success, 98 on failure
+ * multiply - Multiply two positive numbers.
+ * @num1: The first positive number
+ * @num2: The second positive number
+ * Return: The result of the multiplication
  */
+char *multiply(const char *num1, const char *num2)
+{
+    int len1 = 0, len2 = 0, len_result, i, j, carry = 0;
+    char *result;
+
+    while (num1[len1] != '\0')
+        len1++;
+    while (num2[len2] != '\0')
+        len2++;
+
+    len_result = len1 + len2;
+    result = malloc(sizeof(char) * (len_result + 1));
+
+    if (!result)
+        return NULL;
+
+    for (i = 0; i < len_result; i++)
+        result[i] = '0';
+
+    for (i = len1 - 1; i >= 0; i--)
+    {
+        carry = 0;
+        for (j = len2 - 1; j >= 0; j--)
+        {
+            int prod = (num1[i] - '0') * (num2[j] - '0') + (result[i + j + 1] - '0') + carry;
+            carry = prod / 10;
+            result[i + j + 1] = (prod % 10) + '0';
+        }
+        result[i + j + 1] = carry + '0';
+    }
+
+    for (i = 0; i < len_result; i++)
+        result[i] = result[i + (result[i] != '0')];
+    result[len_result] = '\0';
+
+    return result;
+}
+
 int main(int argc, char *argv[])
 {
-	int i;
+    if (argc != 3)
+    {
+        printf("Error\n");
+        return 98;
+    }
 
-	malloc();
-	if (argc != 3)
-	{
-		printf("Error\n");
-		exit(98);
-	}
-	for (i = 1; i < argc; i++)
-	{
-		if (_isdigit(argv[i]))
-		{
-			printf("Error\n");
-			exit(98);
-		}
-	}
-	return (0);
+    if (!is_digit(argv[1]) || !is_digit(argv[2]))
+    {
+        printf("Error\n");
+        return 98;
+    }
+
+    char *num1 = argv[1];
+    char *num2 = argv[2];
+
+    char *result = multiply(num1, num2);
+
+    if (!result)
+    {
+        printf("Error\n");
+        return 98;
+    }
+
+    printf("%s\n", result);
+    free(result);
+
+    return 0;
 }
