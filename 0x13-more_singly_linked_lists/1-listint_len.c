@@ -1,9 +1,9 @@
 #include "lists.h"
-/*
- * count_listint - determines the quantity of elements in a linked list
- * @head: listint_t type linked list to navigate
+/**
+ * listint_len - returns the number of elements in a linked lists
+ * @h: linked list of type listint_t to traverse
  *
- * Result: number of nodes
+ * Return: number of nodes
  */
 size_t listint_len(const listint_t *h)
 {
